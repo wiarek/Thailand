@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galeria – Nowa</title>
+<style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #114b7d;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #114b7d;
+      text-align: center;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery div {
+      background-color: #ddd;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+      border-radius: 8px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .gallery a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 20px #fff;
+    }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      color: white;
+      font-size: 3rem;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+  
+.back-button {
+  display: inline-block;
+  margin: 1rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #007bff;
+}
+.back-button:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<header>Galeria zdjęć / แกลเลอรีภาพถ่าย</header>
+<div class="container">
+
+<a class="back-button" href="home.html">← Powrót do strony głównej / กลับไปยังหน้าแรก</a><div class="gallery">
+<div><a href="img/galerie/bangkok/01.jpg"><img alt="01.jpg" src="img/galerie/bangkok/01.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/02.jpg"><img alt="02.jpg" src="img/galerie/bangkok/02.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/03.jpg"><img alt="03.jpg" src="img/galerie/bangkok/03.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/04.jpg"><img alt="04.jpg" src="img/galerie/bangkok/04.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/05.jpg"><img alt="05.jpg" src="img/galerie/bangkok/05.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/06.jpg"><img alt="06.jpg" src="img/galerie/bangkok/06.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/07.jpg"><img alt="07.jpg" src="img/galerie/bangkok/07.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/08.jpg"><img alt="08.jpg" src="img/galerie/bangkok/08.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/09.jpg"><img alt="09.jpg" src="img/galerie/bangkok/09.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/10.jpg"><img alt="10.jpg" src="img/galerie/bangkok/10.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/11.jpg"><img alt="11.jpg" src="img/galerie/bangkok/11.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/12.jpg"><img alt="12.jpg" src="img/galerie/bangkok/12.jpg"/></a></div>
+<div><a href="img/galerie/bangkok/13.jpg"><img alt="13.jpg" src="img/galerie/bangkok/13.jpg"/></a></div>
+</div>
+</div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+<script>
+const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
+let currentIndex = 0;
+
+function showImage(index) {
+  const overlay = document.querySelector(".lightbox-overlay");
+  const img = overlay.querySelector("img");
+  img.src = images[index].href;
+  overlay.style.display = "flex";
+  currentIndex = index;
+}
+
+images.forEach((link, index) => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    showImage(index);
+  });
+});
+
+document.querySelector(".lightbox-overlay").addEventListener("click", function(e) {
+  if (!e.target.classList.contains("lightbox-prev") && !e.target.classList.contains("lightbox-next")) {
+    this.style.display = "none";
+    this.querySelector("img").src = "";
+  }
+});
+
+document.querySelector(".lightbox-prev").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(currentIndex);
+});
+
+document.querySelector(".lightbox-next").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage(currentIndex);
+});
+</script>
+</body>
+</html>

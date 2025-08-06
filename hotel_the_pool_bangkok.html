@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Opis hotelu</title>
+<style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #114b7d;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #114b7d;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery div {
+      background-color: #ddd;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+      border-radius: 8px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .map-link {
+      margin-top: 1rem;
+      display: inline-block;
+      color: #114b7d;
+      text-decoration: underline;
+    }
+    .section {
+      margin-top: 1.5rem;
+      line-height: 1.6;
+    }
+  
+.gallery a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.gallery a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 0 20px #fff;
+}
+
+.lightbox-prev, .lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  font-size: 3rem;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+</style>
+</head>
+<body>
+<header>The Pool Resort – Bangkok (11–12 marca 2026)<br/>
+พูล รีสอร์ท – แบงค็อก (11–12 มีนาคม ค.ศ. 2026)
+</header>
+<div class="container">
+<h2>Galeria zdjęć / แกลเลอรีภาพ</h2>
+<div class="gallery"><div><a href="img/hotel3/105521838.jpg"><img alt="105521838.jpg" src="img/hotel3/105521838.jpg"/></a></div><div><a href="img/hotel3/250253892.jpg"><img alt="250253892.jpg" src="img/hotel3/250253892.jpg"/></a></div><div><a href="img/hotel3/250254260.jpg"><img alt="250254260.jpg" src="img/hotel3/250254260.jpg"/></a></div><div><a href="img/hotel3/250254511.jpg"><img alt="250254511.jpg" src="img/hotel3/250254511.jpg"/></a></div><div><a href="img/hotel3/250254516.jpg"><img alt="250254516.jpg" src="img/hotel3/250254516.jpg"/></a></div><div><a href="img/hotel3/250254517.jpg"><img alt="250254517.jpg" src="img/hotel3/250254517.jpg"/></a></div><div><a href="img/hotel3/250254519.jpg"><img alt="250254519.jpg" src="img/hotel3/250254519.jpg"/></a></div><div><a href="img/hotel3/250254666.jpg"><img alt="250254666.jpg" src="img/hotel3/250254666.jpg"/></a></div></div>
+<h2>Lokalizacja / ที่ตั้ง</h2>
+<div class="section">
+  Hotel położony jest w dzielnicy Suan Luang, w spokojnej części Bangkoku, dogodnej dojazdem do centrum.
+  <br>โรงแรมตั้งอยู่ในเขตสวนหลวง ซึ่งเป็นย่านเงียบสงบของกรุงเทพฯ และเดินทางสะดวกเข้าสู่ใจกลางเมือง<br/>
+<a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=43%2F2+Rama+9+Road+Soi+57%2F1%2C+Suan+Luang%2C+Suan+Luang%2C+10250+Bangkok%2C+Thailand" target="_blank">Zobacz na mapie Google / ดูบนแผนที่ Google →</a>
+<br><a class="map-link" href="https://www.booking.com/hotel/th/the-pool-resort.pl.html?label=pl-de-booking-desktop-FoC4cEVZ3SFJox4q3lO0wQS652829001040%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-1427517715%3Alp9043755%3Ali%3Adec%3Adm&amp;sid=cf8a35d2a453137cfd62baab955192d5&amp;aid=2311236" target="_blank">Zobacz stronę obiektu na Booking.com / ดูหน้าที่พักบน Booking.com →</a></br></br></div>
+<h2>Opis hotelu / คำอธิบายโรงแรม</h2>
+<div class="section">The Pool Resort to kameralny hotel położony w dzielnicy Suan Luang w Bangkoku, oferujący 19 klimatyzowanych pokoi z balkonami i widokiem na basen. Obiekt zapewnia spokojną atmosferę, idealną dla podróżnych szukających relaksu z dala od miejskiego zgiełku. Goście mają do dyspozycji odkryty basen, zadbany ogród oraz restaurację serwującą dania kuchni tajskiej i lokalne specjały. Pokoje są prosto, ale komfortowo urządzone i wyposażone w niezbędne udogodnienia, takie jak Wi-Fi, klimatyzacja i prywatna łazienka. Personel hotelu jest przyjazny i chętnie pomaga w organizacji transportu lub udziela informacji turystycznych. To dobre miejsce na krótki pobyt w stolicy, z dogodnym dojazdem do lotniska oraz stacji kolei miejskiej ARL.<br/><br/>
+พูล รีสอร์ทเป็นโรงแรมขนาดเล็กที่ตั้งอยู่ในเขตสวนหลวงของกรุงเทพฯ ให้บริการห้องพักปรับอากาศ 19 ห้อง พร้อมระเบียงและวิวสระว่ายน้ำ บรรยากาศเงียบสงบ เหมาะสำหรับผู้ที่ต้องการพักผ่อนห่างไกลจากความวุ่นวายของเมือง ผู้เข้าพักสามารถใช้บริการสระว่ายน้ำกลางแจ้ง สวนที่ได้รับการดูแลอย่างดี และร้านอาหารที่เสิร์ฟอาหารไทยและอาหารท้องถิ่น ห้องพักตกแต่งเรียบง่ายแต่สะดวกสบาย พร้อมสิ่งอำนวยความสะดวกพื้นฐาน เช่น อินเทอร์เน็ต Wi-Fi เครื่องปรับอากาศ และห้องน้ำส่วนตัว พนักงานเป็นมิตรและพร้อมให้ความช่วยเหลือด้านการเดินทางหรือข้อมูลท่องเที่ยว โรงแรมนี้เหมาะสำหรับการเข้าพักระยะสั้นในกรุงเทพฯ โดยสามารถเดินทางไปยังสนามบินและสถานีรถไฟฟ้า ARL ได้อย่างสะดวก
+</div>
+<h2>Informacje praktyczne / ข้อมูลที่ควรรู้</h2>
+<div class="section">• Cena za noc: od około 14 USD (ok. 500 THB), w zależności od sezonu i typu pokoju<br>• Rezerwacja: dostępna przez Booking.com, Agoda oraz inne popularne platformy rezerwacyjne<br>• Transport: hotel oddalony o około 14 km od lotniska Suvarnabhumi; w pobliżu znajdują się stacje ARL Hua Mak (2,8 km) i Ramkhamhaeng (6,1 km)<br/>• Udogodnienia: bezpłatne Wi-Fi w całym obiekcie, odkryty basen, restauracja, bar, całodobowa recepcja oraz bezpłatny parking<br/><br/>
+• ราคาต่อคืน: เริ่มต้นประมาณ 14 ดอลลาร์สหรัฐ (ประมาณ 500 บาท ขึ้นอยู่กับฤดูกาลและประเภทห้องพัก)<br/>
+• การจอง: สามารถจองได้ผ่าน Booking.com, Agoda และแพลตฟอร์มยอดนิยมอื่น ๆ<br/>
+• การเดินทาง: โรงแรมอยู่ห่างจากสนามบินสุวรรณภูมิประมาณ 14 กิโลเมตร; ใกล้สถานีรถไฟฟ้า ARL หัวหมาก (2.8 กม.) และรามคำแหง (6.1 กม.)<br/>
+• สิ่งอำนวยความสะดวก: มี Wi-Fi ฟรีทั่วบริเวณ สระว่ายน้ำกลางแจ้ง ร้านอาหาร บาร์ แผนกต้อนรับตลอด 24 ชั่วโมง และที่จอดรถฟรี<br/></br></br></div>
+<div class="block">
+<strong>Dodatkowe usługi / บริการเพิ่มเติม</strong>
+<ul>
+<li>Basen / สระว่ายน้ำ</li>
+<li>Wi-Fi / อินเทอร์เน็ตไร้สาย (Wi-Fi)</li>
+<li>Ogród / สวน</li>
+<li>Restauracja / ร้านอาหาร</li>
+<li>Rodzinne pokoje / ห้องพักสำหรับครอบครัว</li>
+</ul>
+</div></div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div><script>
+const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
+let currentIndex = 0;
+
+function showImage(index) {
+  const overlay = document.querySelector(".lightbox-overlay");
+  const img = overlay.querySelector("img");
+  img.src = images[index].href;
+  overlay.style.display = "flex";
+  currentIndex = index;
+}
+
+images.forEach((link, index) => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    showImage(index);
+  });
+});
+
+document.querySelector(".lightbox-overlay").addEventListener("click", function(e) {
+  if (!e.target.classList.contains("lightbox-prev") && !e.target.classList.contains("lightbox-next")) {
+    this.style.display = "none";
+    this.querySelector("img").src = "";
+  }
+});
+
+document.querySelector(".lightbox-prev").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(currentIndex);
+});
+
+document.querySelector(".lightbox-next").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage(currentIndex);
+});
+</script></body>
+<div style="text-align: center; margin: 20px 0 40px 0;">
+<a href="home.html" style="
+    display: inline-block;
+    background-color: #004b87;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;">
+    🔙 Powrót do strony głównej / 🔙 กลับไปยังหน้าแรก
+  </a>
+</div></html>

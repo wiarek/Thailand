@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galerie z podróży po Tajlandii</title>
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100vh;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    header {
+      background-color: #114b7d;
+      color: white;
+      padding: 0.750rem;
+      text-align: center;
+      font-size: 1.350rem;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #0d3c66;
+      display: flex;
+      justify-content: center;
+      padding: 0.375rem 0;
+      gap: 1.5rem;
+      font-size: 0.750rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .layout {
+      display: flex;
+      height: calc(100vh - 120px); /* header + nav */
+    }
+
+    aside {
+      background-color: #2c3e50;
+      width: 220px;
+      padding: 0.750rem;
+      font-size: 0.675rem;
+      overflow-y: auto;
+    }
+
+    aside h2 {
+      font-size: 0.750rem;
+      margin-bottom: 0.375rem;
+      color: #ffd700;
+    }
+
+    aside ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    aside li {
+      margin-bottom: 0.3rem;
+    }
+
+    aside li b {
+      color: #ffffff;
+    }
+
+    main {
+      flex: 1;
+      padding: 0.750rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0.600rem;
+    }
+
+    .gallery-tile {
+      background-color: #3a3a3a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.675rem;
+      text-align: center;
+      padding: 0.375rem;
+    }
+  
+      font-weight: bold;
+      font-size: 0.750rem;
+    }
+
+      font-size: 0.600rem;
+      color: #cccccc;
+    }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: #0d3c66;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.750rem;
+    padding: 0.375rem 0.750rem;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f0f0f0;
+    min-width: 220px;
+    z-index: 1;
+    color: black;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 0.375rem 0.750rem;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .sub-dropdown {
+    position: relative;
+  }
+
+  .sub-dropdown > span {
+    display: block;
+    padding: 0.375rem 0.750rem;
+    cursor: default;
+    white-space: nowrap;
+  }
+
+  .sub-dropdown-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #f0f0f0;
+    min-width: 180px;
+  
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+  .sub-dropdown:hover .sub-dropdown-content {
+    display: block;
+  
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+  .sub-dropdown-content a {
+    padding: 0.300rem 0.750rem;
+  }
+
+  nav a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 0.750rem;
+    padding: 0.375rem 0.750rem;
+    background: none;
+  }
+
+  .dropbtn {
+    font-family: inherit;
+    border: none;
+    outline: none;
+  }
+
+  .dropbtn:hover,
+  .dropdown-content a:hover {
+    background-color: #1e1e1e;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+</style>
+<style>
+    .tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 0.750rem;
+      text-align: center;
+      text-shadow: 1px 1px 4px black;
+      height: 112px;
+      transition: transform 0.3s ease;
+    }
+    .tile:hover {
+      transform: scale(1.03);
+    }
+    </style>
+<style>
+a {
+  color: #003366;
+  font-weight: bold;
+}
+</style>
+
+<style>
+.admin-button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: #222;
+  color: #fff;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px #000;
+  z-index: 9999;
+}
+</style>
+
+</head>
+<body style="font-size: 75%;">
+<header>Wyprawa do Tajlandii 2026 / การเดินทางในไทย 2569</header>
+<nav><div class="dropdown"><button class="dropbtn">📅 Plan podróży / แผนการเดินทาง</button><div class="dropdown-content">
+<div class="sub-dropdown">
+<span>Bangkok 11 marca / กรุงเทพฯ 11 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="plan_11_marca.html">11 marca / 11 มีนาคม </a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Koh Kood 12–18 marca / เกาะกูด 12–18 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="plan_12_marca.html">12 marca / มีนาคม </a>
+<a href="plan_13_marca.html">13 marca / มีนาคม </a>
+<a href="plan_14_marca.html">14 marca / มีนาคม </a>
+<a href="plan_15_marca.html">15 marca / มีนาคม </a>
+<a href="plan_16_marca.html">16 marca / มีนาคม </a>
+<a href="plan_17_marca.html">17 marca / มีนาคม </a>
+<a href="plan_18_marca.html">18 marca / มีนาคม </a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Pattaya 19–25 marca / พัทยา 19-25 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="plan_19_marca.html">19 marca / 19 มีนาคม</a>
+<a href="plan_20_marca.html">20 marca / 19 มีนาคม</a>
+<a href="plan_21_marca.html">21 marca / 19 มีนาคม</a>
+<a href="plan_22_marca.html">22 marca / 19 มีนาคม</a>
+<a href="plan_23_marca.html">23 marca / 19 มีนาคม</a>
+<a href="plan_24_marca.html">24 marca / 19 มีนาคม</a>
+<a href="plan_25_marca.html">25 marca / 19 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Bangkok 26 marca / กรุงเทพฯ 26 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="plan_26_marca.html">26 marca / 26 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Sukhothai 27–30 marca / สุโขทัย 27-30 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="plan_27_marca.html">27 marca / 27 มีนาคม</a>
+<a href="plan_28_marca.html">28 marca / 28 มีนาคม</a>
+<a href="plan_29_marca.html">29 marca / 29 มีนาคม</a>
+<a href="plan_30_marca.html">30 marca / 30 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Nakhon Sawan 31 marca – 4 kwietnia / นครสวรรค์ 31-4 เมษายน ▸</span>
+<div class="sub-dropdown-content">
+<a href="plan_31_marca.html">31 marca / 31 มีนาคม</a>
+<a href="plan_01_kwietnia.html">1 kwietnia / 1 เมษายน </a>
+<a href="plan_02_kwietnia.html">2 kwietnia / 2 เมษายน </a>
+<a href="plan_03_kwietnia.html">3 kwietnia / 3 เมษายน </a>
+</div>
+</div>
+<div class="sub-dropdown"><span>Bangkok 4–15 kwietnia / กรุงเทพฯ 4-15 เมษายน ▸</span><div class="sub-dropdown-content">
+<a href="plan_04_kwietnia.html">4 kwietnia / 4 เมษายน</a>
+<a href="plan_05_kwietnia.html">5 kwietnia / 5 เมษายน</a>
+<a href="plan_06_kwietnia.html">6 kwietnia / 6 เมษายน</a>
+<a href="plan_07_kwietnia.html">7 kwietnia / 7 เมษายน</a>
+<a href="plan_08_kwietnia.html">8 kwietnia / 8 เมษายน</a>
+<a href="plan_09_kwietnia.html">9 kwietnia / 9 เมษายน</a>
+<a href="plan_10_kwietnia.html">10 kwietnia / 10 เมษายน</a>
+<a href="plan_11_kwietnia.html">11 kwietnia / 11 เมษายน</a>
+<a href="plan_12_kwietnia.html">12 kwietnia / 12 เมษายน</a>
+<a href="plan_13_kwietnia.html">13 kwietnia / 13 เมษายน</a>
+<a href="plan_14_kwietnia.html">14 kwietnia / 14 เมษายน</a>
+<a href="plan_15_kwietnia.html">15 kwietnia / 15 เมษายน</a></div></div>
+</div></div>
+<div class="dropdown"><button class="dropbtn">💰 Koszty / ค่าใช้จ่าย</button><div class="dropdown-content">
+<div class="sub-dropdown">
+<span>Bangkok 11 marca / กรุงเทพฯ 11 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_11_marca.html">11 marca / 11 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Koh Kood 12–18 marca / เกาะกูด 12-18 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_12_marca.html">12 marca / 12 มีนาคม</a>
+<a href="koszty_13_marca.html">13 marca / 13 มีนาคม</a>
+<a href="koszty_14_marca.html">14 marca / 14 มีนาคม</a>
+<a href="koszty_15_marca.html">15 marca / 15 มีนาคม</a>
+<a href="koszty_16_marca.html">16 marca / 16 มีนาคม</a>
+<a href="koszty_17_marca.html">17 marca / 17 มีนาคม</a>
+<a href="koszty_18_marca.html">18 marca / 18 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Pattaya 19–25 marca / พัทยา 19-25 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_19_marca.html">19 marca / 19 มีนาคม</a>
+<a href="koszty_20_marca.html">20 marca / 20 มีนาคม</a>
+<a href="koszty_21_marca.html">21 marca / 21 มีนาคม</a>
+<a href="koszty_22_marca.html">22 marca / 22 มีนาคม</a>
+<a href="koszty_23_marca.html">23 marca / 23 มีนาคม</a>
+<a href="koszty_24_marca.html">24 marca / 24 มีนาคม</a>
+<a href="koszty_25_marca.html">25 marca / 25 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Bangkok 26 marca / กรุงเทพฯ 26 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_26_marca.html">26 marca / 26 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Sukhothai 27–30 marca / สุโขทัย 27-30 มีนาคม  ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_27_marca.html">27 marca / 27 มีนาคม</a>
+<a href="koszty_28_marca.html">28 marca / 28 มีนาคม</a>
+<a href="koszty_29_marca.html">29 marca / 29 มีนาคม</a>
+<a href="koszty_30_marca.html">30 marca / 30 มีนาคม</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Nakhon Sawan 31 marca – 3 kwietnia / นครสวรรค์ 31 มีนาคม - 3 เมษายน  ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_31_marca.html">31 marca / 31 มีนาคม</a>
+<a href="koszty_01_kwietnia.html">1 kwietnia / 1 เมษายน</a>
+<a href="koszty_02_kwietnia.html">2 kwietnia / 2 เมษายน</a>
+<a href="koszty_03_kwietnia.html">3 kwietnia / 3 เมษายน</a>
+</div>
+</div>
+<div class="sub-dropdown">
+<span>Bangkok 4–15 kwietnia / กรุงเทพฯ 4-15 มีนาคม ▸</span>
+<div class="sub-dropdown-content">
+<a href="koszty_04_kwietnia.html">4 kwietnia / 4 เมษายน</a>
+<a href="koszty_05_kwietnia.html">5 kwietnia / 5 เมษายน</a>
+<a href="koszty_06_kwietnia.html">6 kwietnia / 6 เมษายน</a>
+<a href="koszty_07_kwietnia.html">7 kwietnia / 7 เมษายน</a>
+<a href="koszty_08_kwietnia.html">8 kwietnia / 8 เมษายน</a>
+<a href="koszty_09_kwietnia.html">9 kwietnia / 9 เมษายน</a>
+<a href="koszty_10_kwietnia.html">10 kwietnia / 10 เมษายน</a>
+<a href="koszty_11_kwietnia.html">11 kwietnia / 11 เมษายน</a>
+<a href="koszty_12_kwietnia.html">12 kwietnia / 12 เมษายน</a>
+<a href="koszty_13_kwietnia.html">13 kwietnia / 13 เมษายน</a>
+<a href="koszty_14_kwietnia.html">14 kwietnia / 14 เมษายน</a>
+<a href="koszty_15_kwietnia.html">15 kwietnia / 15 เมษายน</a>
+<hr style="margin: 0.3rem 0;"/>
+</div>
+</div>
+<a href="koszty_ogolne.html"><b>💰 Koszty ogólne / ค่าใช้จ่ายรวม</b></a>
+</div></div>
+<div class="dropdown">
+<button class="dropbtn">🎡 Atrakcje / สถานที่ท่องเที่ยว</button>
+<div class="dropdown-content">
+<a href="atrakcje_koh_kood.html">Koh Kood / เกาะกูด</a>
+<a href="atrakcje_pattaya.html">Pattaya / พัทยา</a>
+<a href="atrakcje_sukhothai.html">Sukhothai / สุโขทัย</a>
+<a href="atrakcje_nakhon.html">Nakhon Sawan / นครสวรรค์</a>
+<a href="atrakcje_bangkok.html">Bangkok / กรุงเทพฯ</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">🏨 Hotele / โรงแรม</button>
+<div class="dropdown-content">
+<a href="hotel_the_pool_bangkok.html">The Pool Resort, Bangkok / เดอะ พูล รีสอร์ต กรุงเทพฯt</a>
+<a href="hotel_kuba_bungalows.html">Kuba Bungalows, Koh Kood / คูบา บังกะโลกส์ เกาะกูด</a>
+<a href="hotel_pattaya.html"> Southern Star Resort, Pattaya / เซาเทิร์นสตาร์ รีสอร์ต พัทยา</a>
+<a href="hotel_rueangsrisiri_sukhothai.html">Rueangsrisiri Guesthouse 2, Sukhothai / Rueangsrisiri Guesthouse 2 สุโขทัย</a>
+<a href="hotel_baansuan_nakhon_sawan.html">Baan Suan Resort, Nakhon Sawan / บ้านสวนรีสอร์ท นครสวรรค์</a>
+<a href="hotel_eurna_bangkok.html">Eurna Resort Hotel, Bangkok / ยูร์นา รีสอร์ต โฮเทล กรุงเทพฯ</a>
+</div>
+</div>
+<a href="mapa_tajlandia.html">🗺️ Mapa / แผนที่</a>
+</nav>
+<div class="layout">
+<aside style="font-size: 0.972rem;">
+<h2>📌 Plan podróży / แผนการเดินทาง</h2>
+<ul>
+<li>• <b>11 marca / 11 มีนาคม</b> – Bangkok / กรุงเทพฯ</li>
+<li>• <b>12–18 marca / 12-18 มีนาคม</b> – Koh Kood / เกาะกูด</li>
+<li>• <b>19–25 marca / 19-25 มีนาคม</b> – Pattaya / พัทยา</li>
+<li>• <b>26 marca / 26 มีนาคม</b> – Bangkok / กรุงเทพฯ</li>
+<li>• <b>27–30 marca / 27-30 มีนาคม</b> – Sukhothai / สุโขทัย</li>
+<li>• <b>31 marca – 3 kwietnia / 31 มีนาคม  - 3  เมษายน</b> – Nakhon Sawan / นครสวรรค์</li>
+<li>• <b>4–15 kwietnia / 4-15 เมษายน</b> – Bangkok / กรุงเทพฯ</li>
+</ul>
+</aside>
+<main style="display: grid;grid-template-columns: repeat(4, 1fr);grid-template-rows: repeat(2, auto);justify-content: center;gap: 0.750rem;padding: 0.750rem;">
+<!-- --------------------------------------1 galeria------->
+<!-- -----------tło-1----------- --><div class="gallery-tile" style="background-image: url('img/galerie/bangkok/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_bangkok.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Bangkok / กรุงเทพฯ</div><div style="font-size: 0.6rem; color: black;">10.2024</div></a></div>
+<!-- --------------------------------------2 galeria------->
+<!-- -----------tło-2----------- --><div class="gallery-tile" style="background-image: url('img/galerie/kanchanaburi/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_kanchanaburi.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Kanchanaburi / กาญจนบุรี</div><div style="font-size: 0.6rem; color: black;">10.2024</div></a></div>
+<!-- --------------------------------------3 galeria------->
+<!-- -----------tło-3----------- --><div class="gallery-tile" style="background-image: url('img/galerie/galeria_hua_hin/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_hua_hin.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Hua Hin / หัวหิน</div><div style="font-size: 0.6rem; color: black;">10.2024</div></a></div>
+<!-- --------------------------------------4 galeria------->
+<!-- -----------tło-4----------- --><div class="gallery-tile" style="background-image: url('img/galerie/koh_kood/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_koh_kood.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Koh Kood / เกาะกูด</div><div style="font-size: 0.6rem; color: black;">11–18 marca</div></a></div>
+<!-- --------------------------------------5 galeria------->
+<!-- -----------tło-5----------- --><div class="gallery-tile" style="background-image: url('img/galerie/pattaya/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_pattaya.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Pattaya / พัทยา</div><div style="font-size: 0.6rem; color: black;">19–25 marca</div></a></div>
+<!-- --------------------------------------6 galeria------->
+<!-- -----------tło-6----------- --><div class="gallery-tile" style="background-image: url('img/galerie/sukhothai/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_sukhothai.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Sukhothai / สุโขทัย</div><div style="font-size: 0.6rem; color: black;">26–30 marca 2026</div></a></div>
+<!-- --------------------------------------7 galeria------->
+<!-- -----------tło-7----------- --><div class="gallery-tile" style="background-image: url('img/galerie/nakhon_sawan/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;"><a href="galeria_nakhon_sawan.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;"><div style="font-weight: bold; font-size: 0.75rem; color: black;">Nakhon Sawan / นครสวรรค์</div><div style="font-size: 0.6rem; color: black;">31 marca–3 kwietnia 2026</div></a></div>
+<!-- --------------------------------------8 galeria------->
+<!-- -----------tło-8----------- --><div class="gallery-tile" style="background-image: url('img/galerie/bangkok2/01.jpg'); background-size: cover; background-position: center; border-radius: 8px; overflow: hidden;">
+  <a href="galeria_bangkok2.html" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%; text-decoration: none;">
+    <div style="font-weight: bold; font-size: 0.75rem; color: black;">Bangkok2 / กรุงเทพฯ</div>
+    <div style="font-size: 0.6rem; color: black;">4–15 kwietnia 2026</div>
+  </a></div>
+<!-- ------------------------------------------------------></main>
+</div>
+<script>
+document.querySelectorAll('.kohkood-wrapper').forEach(wrapper => {
+  wrapper.addEventListener('mouseenter', () => {
+    const subtiles = wrapper.querySelector('.kohkood-subtiles');
+    if (subtiles) subtiles.style.display = 'block';
+  });
+  wrapper.addEventListener('mouseleave', () => {
+    const subtiles = wrapper.querySelector('.kohkood-subtiles');
+    if (subtiles) subtiles.style.display = 'none';
+  });
+});
+</script>
+
+<a href="#" onclick="openAdmin()" class="admin-button">🔧 Admin</a>
+
+<script>
+function openAdmin() {
+  const pin = prompt("Podaj PIN administratora:");
+  if (pin === "19091967") {
+    window.open("https://github.com/wiarek/6-podej-cie", "_blank");
+  } else if (pin !== null) {
+    alert("Nieprawidłowy PIN.");
+  }
+}
+</script>
+
+</body>
+</html>

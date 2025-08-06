@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Opis hotelu</title>
+<style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #114b7d;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #114b7d;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery div {
+      background-color: #ddd;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+      border-radius: 8px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .map-link {
+      margin-top: 1rem;
+      display: inline-block;
+      color: #114b7d;
+      text-decoration: underline;
+    }
+    .section {
+      margin-top: 1.5rem;
+      line-height: 1.6;
+    }
+  
+.gallery a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.gallery a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 0 20px #fff;
+}
+
+.lightbox-prev, .lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  font-size: 3rem;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+</style>
+</head>
+<body>
+<header>Eurna Resort Hotel – Bangkok (26–27 marca, 4–15 kwietnia 2026)<br>เออร์น่า รีสอร์ท โฮเท็ล – กรุงเทพฯ (26–27 มีนาคม, 4–15 เมษายน ค.ศ. 2026)</header>
+<div class="container">
+<h2>Galeria zdjęć / แกลเลอรีภาพ</h2>
+<div class="gallery">
+<div><a href="img/hotel4/122638247.jpg"><img alt="122638247.jpg" src="img/hotel4/122638247.jpg"/></a></div>
+<div><a href="img/hotel4/122680464.jpg"><img alt="122680464.jpg" src="img/hotel4/122680464.jpg"/></a></div>
+<div><a href="img/hotel4/520950823.jpg"><img alt="520950823.jpg" src="img/hotel4/520950823.jpg"/></a></div>
+<div><a href="img/hotel4/520950879.jpg"><img alt="520950879.jpg" src="img/hotel4/520950879.jpg"/></a></div>
+<div><a href="img/hotel4/520950880.jpg"><img alt="520950880.jpg" src="img/hotel4/520950880.jpg"/></a></div>
+<div><a href="img/hotel4/520950900.jpg"><img alt="520950900.jpg" src="img/hotel4/520950900.jpg"/></a></div>
+<div><a href="img/hotel4/520950975.jpg"><img alt="520950975.jpg" src="img/hotel4/520950975.jpg"/></a></div>
+<div><a href="img/hotel4/520953127.jpg"><img alt="520953127.jpg" src="img/hotel4/520953127.jpg"/></a></div>
+</div>
+<h2>Lokalizacja / ที่ตั้ง</h2>
+<div class="section">
+  Hotel znajduje się w dzielnicy Samedam w Bangkoku, w pobliżu Thanon Rama II – ciche i wygodne miejsce.<br/>
+โรงแรมตั้งอยู่ในย่านแสมดำ กรุงเทพฯ ใกล้ถนนพระราม 2 เป็นสถานที่เงียบสงบและสะดวกสบาย<br>
+<a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=101%2F1+soi+9%2F1+Thakam+Rama+2+Samedam+Bangkok%2C+10500+Bangkok%2C+Thailand" target="_blank">Zobacz na mapie Google / ดูบนแผนที่ Google →</a><br/>
+<a class="map-link" href="https://www.booking.com/hotel/th/eurna-resort-bangkok.pl.html?label=pl-de-booking-desktop-FoC4cEVZ3SFJox4q3lO0wQS652829001040%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-1427517715%3Alp9043755%3Ali%3Adec%3Adm&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIB2rWUhun2k4NqNTG5AiYxbwW5tHSbu4iLc7aUJJcuPFqZSAjk1B0BoCmYkQAvD_BwE&amp;aid=2311236&amp;ucfs=1&amp;arphpl=1" target="_blank">Zobacz stronę obiektu na Booking.com / ดูหน้าที่พักบน Booking.com → </a><br/>
+</div>
+<h2>Opis hotelu / คำอธิบายโรงแรม</h2>
+<div class="section">
+  Kameralny, trzygwiazdkowy hotel położony w cichej dzielnicy Bang Khun Thian, oferuje 69 pokoi z klimatyzacją, balkonami i oddzielną częścią jadalną 
+Do dyspozycji gości są basen zewnętrzny, bezpłatne Wi‑Fi, restauracja oraz parking .
+Goście chwalą pomocny personel, cichość i komfort pobytu, choć pojawiają się uwagi dotyczące czystości pokoi i utrzymania niektórych pomieszczeń. 
+Hotel stanowi solidną wartość cenową, a lokalizacja — w odległości 15 min jazdy od Wat Arun i ICONSIAM — odpowiada podróżnym szukającym spokoju z dostępem do atrakcji. 
+Dodatkowo: oferuje całodobową recepcję, usługę prania oraz bar, co zwiększa wygodę pobytu.<br><br>
+โรงแรมขนาดเล็กระดับสามดาวแห่งนี้ตั้งอยู่ในย่านบางขุนเทียนอันเงียบสงบ มีห้องพักทั้งหมด 69 ห้อง พร้อมเครื่องปรับอากาศ ระเบียง และพื้นที่รับประทานอาหารแยกต่างหาก ผู้เข้าพักสามารถใช้บริการสระว่ายน้ำกลางแจ้ง Wi‑Fi ฟรี ร้านอาหาร และที่จอดรถได้ พนักงานได้รับคำชมว่าให้บริการดีและเป็นกันเอง บรรยากาศเงียบสงบและพักผ่อนสบาย แม้บางครั้งจะมีข้อสังเกตเกี่ยวกับความสะอาดของห้องพักและการดูแลรักษาบางพื้นที่ โรงแรมนี้ให้ความคุ้มค่าในด้านราคา และทำเลอยู่ห่างจากวัดอรุณและ ICONSIAM เพียง 15 นาทีโดยรถยนต์ เหมาะสำหรับผู้ที่ต้องการความสงบแต่ยังเข้าถึงสถานที่ท่องเที่ยวได้ง่าย นอกจากนี้ยังมีแผนกต้อนรับตลอด 24 ชั่วโมง บริการซักรีด และบาร์เพื่อความสะดวกสบายตลอดการเข้าพัก 
+</div>
+<h2>Informacje praktyczne / ข้อมูลที่ควรรู้</h2>
+<div class="section">
+  • Cena za noc: ok. 700 THB / ราคาต่อคืน: ประมาณ 700 บาท<br/>
+  • Rezerwacja dostępna przez Booking / การจอง: สามารถจองได้ผ่าน Booking<br/>
+  • W okolicy kilka restauracji i 7-Eleven / บริเวณใกล้เคียงมีร้านอาหารหลายแห่งและร้านสะดวกซื้อ 7-Eleven<br/>
+  • Dogodny dojazd taksówką z lotniska / เดินทางสะดวกด้วยแท็กซี่จากสนามบิน<br/>
+</div>
+<div class="block"><strong>Dodatkowe usługi / บริการเพิ่มเติม</strong><ul>
+<li>W pokojach Wi-Fi / มีบริการ Wi‑Fi ฟรีในบริเวณโรงแรมและในห้องพักครับ</li>
+<li>Prywatne balkony / มีระเบียงส่วนตัวในทุกห้องพักครับ</li>
+<li>Basen zewnętrzny / มีสระว่ายน้ำกลางแจ้งให้บริการในโรงแรมค่ะ</li>
+<li>Na terenie obiektu jest restauracja / มีร้านอาหารภายในที่พัก</li>
+<li>Klimatyzacja / มีเครื่องปรับอากาศ</li>
+</ul></div></div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div><script>
+const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
+let currentIndex = 0;
+
+function showImage(index) {
+  const overlay = document.querySelector(".lightbox-overlay");
+  const img = overlay.querySelector("img");
+  img.src = images[index].href;
+  overlay.style.display = "flex";
+  currentIndex = index;
+}
+
+images.forEach((link, index) => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    showImage(index);
+  });
+});
+
+document.querySelector(".lightbox-overlay").addEventListener("click", function(e) {
+  if (!e.target.classList.contains("lightbox-prev") && !e.target.classList.contains("lightbox-next")) {
+    this.style.display = "none";
+    this.querySelector("img").src = "";
+  }
+});
+
+document.querySelector(".lightbox-prev").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(currentIndex);
+});
+
+document.querySelector(".lightbox-next").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage(currentIndex);
+});
+</script></body>
+<div style="text-align: center; margin: 20px 0 40px 0;">
+  <a href="home.html" style="
+    display: inline-block;
+    background-color: #004b87;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;">
+    🔙 Powrót do strony głównej / กลับไปยังหน้าแรก
+  </a>
+</html>

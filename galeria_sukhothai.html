@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galeria – Nowa</title>
+<style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #114b7d;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #114b7d;
+      text-align: center;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery div {
+      background-color: #ddd;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+      border-radius: 8px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .gallery a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 20px #fff;
+    }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      color: white;
+      font-size: 3rem;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+  
+.back-button {
+  display: inline-block;
+  margin: 1rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #007bff;
+}
+.back-button:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<header>Galeria zdjęć / แกลเลอรีภาพถ่าย</header>
+<div class="container">
+
+<a class="back-button" href="home.html">← Powrót do strony głównej / กลับไปยังหน้าแรก</a><div class="gallery">
+<div><a href="img/galerie/sukhothai/01.jpg"><img alt="01.jpg" src="img/galerie/sukhothai/01.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/02.jpg"><img alt="02.jpg" src="img/galerie/sukhothai/02.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/03.jpg"><img alt="03.jpg" src="img/galerie/sukhothai/03.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/04.jpg"><img alt="04.jpg" src="img/galerie/sukhothai/04.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/05.jpg"><img alt="05.jpg" src="img/galerie/sukhothai/05.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/06.jpg"><img alt="06.jpg" src="img/galerie/sukhothai/06.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/07.jpg"><img alt="07.jpg" src="img/galerie/sukhothai/07.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/08.jpg"><img alt="08.jpg" src="img/galerie/sukhothai/08.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/09.jpg"><img alt="09.jpg" src="img/galerie/sukhothai/09.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/10.jpg"><img alt="10.jpg" src="img/galerie/sukhothai/10.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/11.jpg"><img alt="11.jpg" src="img/galerie/sukhothai/11.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/12.jpg"><img alt="12.jpg" src="img/galerie/sukhothai/12.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/13.jpg"><img alt="13.jpg" src="img/galerie/sukhothai/13.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/14.jpg"><img alt="14.jpg" src="img/galerie/sukhothai/14.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/15.jpg"><img alt="15.jpg" src="img/galerie/sukhothai/15.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/16.jpg"><img alt="16.jpg" src="img/galerie/sukhothai/16.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/17.jpg"><img alt="17.jpg" src="img/galerie/sukhothai/17.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/18.jpg"><img alt="18.jpg" src="img/galerie/sukhothai/18.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/19.jpg"><img alt="19.jpg" src="img/galerie/sukhothai/19.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/20.jpg"><img alt="20.jpg" src="img/galerie/sukhothai/20.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/21.jpg"><img alt="21.jpg" src="img/galerie/sukhothai/21.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/22.jpg"><img alt="22.jpg" src="img/galerie/sukhothai/22.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/23.jpg"><img alt="23.jpg" src="img/galerie/sukhothai/23.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/24.jpg"><img alt="24.jpg" src="img/galerie/sukhothai/24.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/25.jpg"><img alt="25.jpg" src="img/galerie/sukhothai/25.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/26.jpg"><img alt="26.jpg" src="img/galerie/sukhothai/26.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/27.jpg"><img alt="27.jpg" src="img/galerie/sukhothai/27.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/28.jpg"><img alt="28.jpg" src="img/galerie/sukhothai/28.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/29.jpg"><img alt="29.jpg" src="img/galerie/sukhothai/29.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/30.jpg"><img alt="30.jpg" src="img/galerie/sukhothai/30.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/31.jpg"><img alt="31.jpg" src="img/galerie/sukhothai/31.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/32.jpg"><img alt="32.jpg" src="img/galerie/sukhothai/32.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/33.jpg"><img alt="33.jpg" src="img/galerie/sukhothai/33.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/34.jpg"><img alt="34.jpg" src="img/galerie/sukhothai/34.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/35.jpg"><img alt="35.jpg" src="img/galerie/sukhothai/35.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/36.jpg"><img alt="36.jpg" src="img/galerie/sukhothai/36.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/37.jpg"><img alt="37.jpg" src="img/galerie/sukhothai/37.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/38.jpg"><img alt="38.jpg" src="img/galerie/sukhothai/38.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/39.jpg"><img alt="39.jpg" src="img/galerie/sukhothai/39.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/40.jpg"><img alt="40.jpg" src="img/galerie/sukhothai/40.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/41.jpg"><img alt="41.jpg" src="img/galerie/sukhothai/41.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/42.jpg"><img alt="42.jpg" src="img/galerie/sukhothai/42.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/43.jpg"><img alt="43.jpg" src="img/galerie/sukhothai/43.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/44.jpg"><img alt="44.jpg" src="img/galerie/sukhothai/44.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/45.jpg"><img alt="45.jpg" src="img/galerie/sukhothai/45.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/46.jpg"><img alt="46.jpg" src="img/galerie/sukhothai/46.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/47.jpg"><img alt="47.jpg" src="img/galerie/sukhothai/47.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/48.jpg"><img alt="48.jpg" src="img/galerie/sukhothai/48.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/49.jpg"><img alt="49.jpg" src="img/galerie/sukhothai/49.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/50.jpg"><img alt="50.jpg" src="img/galerie/sukhothai/50.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/51.jpg"><img alt="51.jpg" src="img/galerie/sukhothai/51.jpg"/></a></div>
+<div><a href="img/galerie/sukhothai/52.jpg"><img alt="52.jpg" src="img/galerie/sukhothai/52.jpg"/></a></div>
+</div>
+</div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+<script>
+const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
+let currentIndex = 0;
+
+function showImage(index) {
+  const overlay = document.querySelector(".lightbox-overlay");
+  const img = overlay.querySelector("img");
+  img.src = images[index].href;
+  overlay.style.display = "flex";
+  currentIndex = index;
+}
+
+images.forEach((link, index) => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    showImage(index);
+  });
+});
+
+document.querySelector(".lightbox-overlay").addEventListener("click", function(e) {
+  if (!e.target.classList.contains("lightbox-prev") && !e.target.classList.contains("lightbox-next")) {
+    this.style.display = "none";
+    this.querySelector("img").src = "";
+  }
+});
+
+document.querySelector(".lightbox-prev").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(currentIndex);
+});
+
+document.querySelector(".lightbox-next").addEventListener("click", function(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage(currentIndex);
+});
+</script>
+</body>
+</html>
