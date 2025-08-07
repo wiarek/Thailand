@@ -1,10 +1,11 @@
+
 const CACHE_NAME = 'thailand-2026-cache-v1';
 const urlsToCache = [
-  '/Thailand/',
-  '/Thailand/index.html',
-  '/Thailand/home.html',
-  '/Thailand/manifest.json',
-  '/Thailand/icon-512.png'
+  '/',
+  '/index.html',
+  '/home.html',
+  '/manifest.json',
+  '/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
