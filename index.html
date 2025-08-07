@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, orientation=landscape"/>
+  <meta name="screen-orientation" content="landscape" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>Thailand 2026</title>
-  <link rel="manifest" href="/Thailand/manifest.json">
-  <link rel="icon" href="/Thailand/icon-512.png" type="image/png">
+
+  <!-- Uwaga: ścieżki względne do GitHub Pages -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-512.png" type="image/png">
+
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Thailand/sw.js');
+      navigator.serviceWorker.register('sw.js');
     }
   </script>
+
   <style>
     body, html {
       margin: 0;
