@@ -49,6 +49,7 @@
       padding: 0.5em 1.5em;
       border-radius: 10px;
       animation: fadeIn 2s ease-in-out;
+      text-align: center;
     }
 
     #installButton {
@@ -76,8 +77,8 @@
     Your browser does not support the video tag.
   </video>
   <div class="splash-content">
-    <h1>Thailand 2026</h1>
-    <button id="installButton">Zainstaluj aplikację</button>
+    <h1>Thailand 2026<br>ไทยแลนด์ 2026</h1>
+    <button id="installButton">Zainstaluj aplikację / ติดตั้งแอป</button>
   </div>
 
   <script>
@@ -94,22 +95,25 @@
       installBtn.style.display = 'none';
       if (deferredPrompt) {
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
+        deferredPrompt.userChoice.then(() => {
           deferredPrompt = null;
         });
       }
     });
   </script>
-  <script>
-  // przekierowanie tylko gdy aplikacja działa jako PWA (standalone)
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-                     || window.navigator.standalone === true;
 
-  if (isStandalone) {
-    setTimeout(() => {
-      window.location.href = 'home.html';
-    }, 4000); // 4 sekundy na animację startową
-  }
-</script>
+  <script>
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                       || window.navigator.standalone === true;
+
+    const video = document.querySelector('video');
+
+    if (isStandalone && video) {
+      video.removeAttribute('loop');
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 4000);
+    }
+  </script>
 </body>
 </html>
