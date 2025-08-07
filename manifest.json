@@ -1,14 +1,14 @@
 {
   "name": "Thailand 2026",
   "short_name": "Thailand 2026",
-  "start_url": "/Thailand/index.html",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "landscape",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/Thailand/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
