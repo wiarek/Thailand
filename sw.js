@@ -1,10 +1,10 @@
-const CACHE_NAME = 'thailand-2026-cache-v2'; // ← zmieniona nazwa!
+const CACHE_NAME = 'thailand-2026-cache-v1';
 const urlsToCache = [
-  'index.html',
-  'home.html',
-  'manifest.json',
-  'icon-512.png',
-  'img/fale.mp4'
+  '/Thailand/',
+  '/Thailand/index.html',
+  '/Thailand/home.html',
+  '/Thailand/manifest.json',
+  '/Thailand/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
