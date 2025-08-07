@@ -9,7 +9,6 @@
   <meta name="theme-color" content="#000000" />
   <title>Thailand 2026</title>
 
-  <!-- WAŻNE: Ścieżki względne -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon-512.png" type="image/png">
 
@@ -73,19 +72,6 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    #toggleMusic {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 9999;
-      background: rgba(255,255,255,0.8);
-      border: none;
-      border-radius: 8px;
-      padding: 0.5em 1em;
-      cursor: pointer;
-      font-size: 1em;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(1.1); }
       to { opacity: 1; transform: scale(1); }
@@ -97,22 +83,11 @@
     <source src="img/fale.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
-  <!-- AUDIO -->
-  <audio id="bgmusic" autoplay loop>
-    <source src="audio/background.mp3" type="audio/mp3">
-    Twoja przeglądarka nie obsługuje dźwięku.
-  </audio>
-
-  <!-- PRZYCISK WYŁĄCZANIA MUZYKI -->
-  <button id="toggleMusic">🔊 Wyłącz dźwięk</button>
-
   <div class="splash-content">
     <h1>Thailand 2026<br>ไทยแลนด์ 2026</h1>
     <button id="installButton">Zainstaluj aplikację / ติดตั้งแอป</button>
   </div>
 
-  <!-- OBSŁUGA INSTALACJI -->
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installButton');
@@ -134,30 +109,6 @@
     });
   </script>
 
-  <!-- OBSŁUGA MUZYKI -->
-  <script>
-    const bgmusic = document.getElementById('bgmusic');
-    const toggleBtn = document.getElementById('toggleMusic');
-
-    toggleBtn.addEventListener('click', () => {
-      if (bgmusic.paused) {
-        bgmusic.play();
-        toggleBtn.textContent = '🔊 Wyłącz dźwięk';
-      } else {
-        bgmusic.pause();
-        toggleBtn.textContent = '🔈 Włącz dźwięk';
-      }
-    });
-
-    // Wymuszenie odtwarzania po pierwszym kliknięciu (dla mobilnych)
-    document.addEventListener('click', () => {
-      if (bgmusic.paused) {
-        bgmusic.play().catch(() => {});
-      }
-    }, { once: true });
-  </script>
-
-  <!-- OBSŁUGA PRZEJŚCIA PO ANIMACJI -->
   <script>
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches
                        || window.navigator.standalone === true;
