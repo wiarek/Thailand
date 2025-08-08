@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thailand-2026-cache-v5'; // UWAGA: zwiększ przy każdej aktualizacji!
+const CACHE_NAME = 'thailand-2026-cache-v6'; // UWAGA: zwiększ przy każdej aktualizacji!
 const urlsToCache = [
   '/Thailand/',
   '/Thailand/index.html',
