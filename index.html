@@ -12,12 +12,6 @@
   <link rel="manifest" href="/Thailand/manifest.json">
   <link rel="icon" href="/Thailand/icon-512.png" type="image/png">
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Thailand/sw.js');
-    }
-  </script>
-
   <style>
     body, html {
       margin: 0;
@@ -89,6 +83,7 @@
   </div>
 
   <script>
+    // PWA: przycisk instalacji
     let deferredPrompt;
     const installBtn = document.getElementById('installButton');
 
@@ -110,6 +105,7 @@
   </script>
 
   <script>
+    // Jeśli aplikacja jest uruchomiona jako standalone, przechodzimy po 4 sek
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches
                        || window.navigator.standalone === true;
 
@@ -120,6 +116,34 @@
       setTimeout(() => {
         window.location.href = 'home.html';
       }, 4000);
+    }
+  </script>
+
+  <script>
+    // Rejestracja Service Workera + obsługa komunikatu o aktualizacji
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/Thailand/sw.js').then(reg => {
+        reg.onupdatefound = () => {
+          const installingWorker = reg.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              const banner = document.createElement('div');
+              banner.innerHTML = `
+                <div style="position:fixed;bottom:10px;left:10px;right:10px;background:#222;color:#fff;padding:15px;border-radius:8px;z-index:9999;text-align:center;font-size:16px;">
+                  Nowa wersja aplikacji jest dostępna.
+                  <button id="refreshApp" style="margin-left:15px;padding:5px 10px;">Odśwież</button>
+                </div>`;
+              document.body.appendChild(banner);
+              document.getElementById('refreshApp').onclick = () => {
+                if (reg.waiting) {
+                  reg.waiting.postMessage('checkForUpdate');
+                }
+                window.location.reload();
+              };
+            }
+          };
+        };
+      });
     }
   </script>
 </body>
