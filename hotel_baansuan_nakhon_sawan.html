@@ -5,6 +5,21 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Opis hotelu</title>
+    <!-- >>> MUZYKA START >>> -->
+<audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
+<script>
+  window.addEventListener('load', function () {
+    const audio = document.getElementById('bg-music');
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn("Autoodtwarzanie zablokowane, użytkownik musi włączyć dźwięk ręcznie.");
+      });
+    }
+  });
+</script>
+<!-- <<< MUZYKA KONIEC <<< -->
+
 <style>
     body {
       font-family: sans-serif;
