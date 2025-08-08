@@ -4,6 +4,21 @@
 <head>
   <meta charset="utf-8"/>
   <title>Koszty – 29 marca 2026</title>
+  <!-- >>> MUZYKA START >>> -->
+<audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
+<script>
+  window.addEventListener('load', function () {
+    const audio = document.getElementById('bg-music');
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn("Autoodtwarzanie zablokowane, użytkownik musi włączyć dźwięk ręcznie.");
+      });
+    }
+  });
+</script>
+<!-- <<< MUZYKA KONIEC <<< -->
+
   <style>
     body { font-family: sans-serif; background-color: #f5f5f5; margin: 0; padding: 0; }
     .container { max-width: 800px; margin: 2rem auto; background: white; padding: 2rem;
