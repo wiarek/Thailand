@@ -1,45 +1,37 @@
-const CACHE_NAME = 'thailand-2026-cache-v4'; // Zwiększaj za każdym razem
+const CACHE_NAME = 'thailand-2026-cache-v3'; // UWAGA: zwiększ przy każdej aktualizacji!
 const urlsToCache = [
   '/Thailand/',
   '/Thailand/index.html',
+  '/Thailand/home.html',
   '/Thailand/manifest.json',
-  '/Thailand/icon-512.png',
-  // Dodaj inne pliki statyczne, np. galerie
+  '/Thailand/icon-512.png'
 ];
 
-// Instalacja i dodanie plików do cache
 self.addEventListener('install', event => {
-  self.skipWaiting(); // od razu aktywuje nowy SW
+  self.skipWaiting(); // <- od razu aktywuje nową wersję
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
-// Aktywacja i czyszczenie starych cache’ów
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.filter(key => key !== CACHE_NAME)
-            .map(key => caches.delete(key))
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       )
     )
   );
-  self.clients.claim(); // przejmuje kontrolę nad otwartymi stronami
+  self.clients.claim(); // <- od razu przejmuje kontrolę nad otwartymi zakładkami
 });
 
-// Pobieranie z cache lub z sieci
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
+    caches.match(event.request).then(response => response || fetch(event.request))
   );
 });
 
-// Powiadamianie klientów o nowej wersji (do komunikatu)
+// <- Komunikacja ze stroną: pozwala na kliknięcie "Odśwież"
 self.addEventListener('message', event => {
   if (event.data === 'checkForUpdate') {
     self.skipWaiting();
