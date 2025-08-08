@@ -1,151 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" translate="no">
-<meta name="google" content="notranslate">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, orientation=landscape"/>
-  <meta name="screen-orientation" content="landscape" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#000000" />
-  <title>Thailand 2026</title>
-
-  <link rel="manifest" href="/Thailand/manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <title>Thailand SPA</title>
   <link rel="icon" href="/Thailand/icon-512.png" type="image/png">
-
+  <link rel="manifest" href="/Thailand/manifest.json">
   <style>
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      color: #333;
     }
-
-    .video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .splash-content {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background-color: rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 3em;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 0.5em 1.5em;
-      border-radius: 10px;
-      animation: fadeIn 2s ease-in-out;
+    nav {
+      background: #114b7d;
+      color: white;
+      padding: 1rem;
       text-align: center;
     }
-
-    #installButton {
-      margin-top: 1.5em;
-      padding: 0.6em 1.4em;
-      font-size: 1em;
-      background-color: #ffffff;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: none;
-      animation: fadeIn 2s ease-in-out;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(1.1); }
-      to { opacity: 1; transform: scale(1); }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 1.5rem;
+    }
+    #toggle-music {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      cursor: pointer;
+      z-index: 1000;
     }
   </style>
 </head>
-<body translate="no">
-  <video class="video-bg" autoplay muted loop playsinline>
-    <source src="img/fale.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="splash-content">
-    <h1>Thailand 2026<br>ไทยแลนด์ 2026</h1>
-    <button id="installButton">Zainstaluj aplikację / ติดตั้งแอป</button>
-  </div>
+<body>
+  <!-- Audio background -->
+  <audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
+  <button id="toggle-music">🔊</button>
 
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Strona główna</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#plan">Plan</a>
+  </nav>
+
+  <!-- Dynamic content -->
+  <main id="content">
+    <p>Ładowanie...</p>
+  </main>
+
+  <script src="spa-loader.js"></script>
   <script>
-    // PWA: przycisk instalacji
-    let deferredPrompt;
-    const installBtn = document.getElementById('installButton');
+    const audio = document.getElementById('bg-music');
+    const toggleBtn = document.getElementById('toggle-music');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'block';
-    });
-
-    installBtn.addEventListener('click', () => {
-      installBtn.style.display = 'none';
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-          deferredPrompt = null;
-        });
+    toggleBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        toggleBtn.textContent = '🔊';
+      } else {
+        audio.pause();
+        toggleBtn.textContent = '🔇';
       }
     });
-  </script>
-
-  <script>
-    // Jeśli aplikacja jest uruchomiona jako standalone, przechodzimy po 4 sek
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-                       || window.navigator.standalone === true;
-
-    const video = document.querySelector('video');
-
-    if (isStandalone && video) {
-      video.removeAttribute('loop');
-      setTimeout(() => {
-        window.location.href = 'home.html';
-      }, 6000);
-    }
-  </script>
-
-  <script>
-    // Rejestracja Service Workera + obsługa komunikatu o aktualizacji
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Thailand/sw.js').then(reg => {
-        reg.onupdatefound = () => {
-          const installingWorker = reg.installing;
-          installingWorker.onstatechange = () => {
-            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              const banner = document.createElement('div');
-              banner.innerHTML = `
-                <div style="position:fixed;bottom:10px;left:10px;right:10px;background:#222;color:#fff;padding:15px;border-radius:8px;z-index:9999;text-align:center;font-size:16px;">
-                  Nowa wersja aplikacji jest dostępna.
-                  <button id="refreshApp" style="margin-left:15px;padding:5px 10px;">Odśwież</button>
-                </div>`;
-              document.body.appendChild(banner);
-              document.getElementById('refreshApp').onclick = () => {
-                if (reg.waiting) {
-                  reg.waiting.postMessage('checkForUpdate');
-                }
-                window.location.reload();
-              };
-            }
-          };
-        };
-      });
-    }
   </script>
 </body>
 </html>
