@@ -1,39 +1,44 @@
-const CACHE_NAME = 'thailand-2026-cache-v11'; // UWAGA: zwiększ przy każdej aktualizacji!
+
+const CACHE_NAME = 'thailand-cache-v2';
 const urlsToCache = [
-  '/Thailand/',
+  '/',
   '/Thailand/index.html',
   '/Thailand/home.html',
+  '/Thailand/audio/background.mp3',
+  '/Thailand/style.css',
   '/Thailand/manifest.json',
-  '/Thailand/icon-512.png'
+  '/Thailand/icon-512.png',
+  // Możesz dodać inne ścieżki statyczne w razie potrzeby
 ];
 
-self.addEventListener('install', event => {
-  self.skipWaiting(); // <- od razu aktywuje nową wersję
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      )
-    )
-  );
-  self.clients.claim(); // <- od razu przejmuje kontrolę nad otwartymi zakładkami
-});
-
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    caches.match(event.request)
+      .then(function(response) {
+        return response || fetch(event.request);
+      })
   );
 });
 
-// <- Komunikacja ze stroną: pozwala na kliknięcie "Odśwież"
-self.addEventListener('message', event => {
-  if (event.data === 'checkForUpdate') {
-    self.skipWaiting();
-  }
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(name) {
+          return name !== CACHE_NAME;
+        }).map(function(name) {
+          return caches.delete(name);
+        })
+      );
+    })
+  );
 });
