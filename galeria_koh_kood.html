@@ -1,26 +1,10 @@
-
 <!DOCTYPE html>
-
 <html lang="pl">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Galeria – Nowa</title>
-  <!-- >>> MUZYKA START >>> -->
-<audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
-<script>
-  window.addEventListener('load', function () {
-    const audio = document.getElementById('bg-music');
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(error => {
-        console.warn("Autoodtwarzanie zablokowane, użytkownik musi włączyć dźwięk ręcznie.");
-      });
-    }
-  });
-</script>
-<!-- <<< MUZYKA KONIEC <<< -->
-  
+
 <style>
     body {
       font-family: sans-serif;
@@ -113,13 +97,35 @@
 .back-button:hover {
   text-decoration: underline;
 }
+
+/* >>> PRZYCISK MUZYKI – STYLE START >>> */
+.music-toggle{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: .5rem .8rem;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffffcc;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 10000; /* nad lightboxem i popupem */
+}
+/* <<< PRZYCISK MUZYKI – STYLE KONIEC <<< */
 </style>
 </head>
 <body>
 <header>Galeria zdjęć / แกลเลอรีภาพถ่าย</header>
+
+<!-- >>> MUZYKA + PRZYCISK START >>> -->
+<audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
+<button id="toggle-music" class="music-toggle" aria-pressed="false">⏸ Stop</button>
+<!-- <<< MUZYKA + PRZYCISK KONIEC <<< -->
+
 <div class="container">
 
-<a class="back-button" href="home.html">← Powrót do strony głównej / กลับไปยังหน้าแรก</a><div class="gallery">
+<a class="back-button" href="home.html">← Powrót do strony głównej / กลับไปยังหน้าแรก</a>
+<div class="gallery">
 <div><a href="img/galerie/koh_kood/01.jpg"><img alt="01.jpg" src="img/galerie/koh_kood/01.jpg"/></a></div>
 <div><a href="img/galerie/koh_kood/02.jpg"><img alt="02.jpg" src="img/galerie/koh_kood/02.jpg"/></a></div>
 <div><a href="img/galerie/koh_kood/03.jpg"><img alt="03.jpg" src="img/galerie/koh_kood/03.jpg"/></a></div>
@@ -173,8 +179,21 @@
 <div><a href="img/galerie/koh_kood/51.jpg"><img alt="51.jpg" src="img/galerie/koh_kood/51.jpg"/></a></div>
 <div><a href="img/galerie/koh_kood/52.jpg"><img alt="52.jpg" src="img/galerie/koh_kood/52.jpg"/></a></div>
 </div>
+
+<!-- >>> POPUP WIDEO – START >>> -->
+<div id="video-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:9999; align-items:center; justify-content:center;">
+  <video id="video-player" controls autoplay style="max-width:90%; max-height:90%;">
+    <!-- domyślnie brak <source>; źródło ustawisz przez JS -->
+  </video>
+  <button onclick="document.getElementById('video-popup').style.display='none'; document.getElementById('video-player').pause();"
+          style="position:absolute; top:10px; right:20px; font-size:2rem; color:white; background:none; border:none; cursor:pointer;">×</button>
 </div>
+<!-- <<< POPUP WIDEO – KONIEC <<< -->
+
+</div> <!-- .container -->
+
 <div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+
 <script>
 const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
 let currentIndex = 0;
@@ -213,5 +232,53 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
   showImage(currentIndex);
 });
 </script>
+
+<!-- >>> SKRYPT MUZYKI + WIDEO – START >>> -->
+<script>
+// ——— Przycisk muzyki ———
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('bg-music');
+  const btn   = document.getElementById('toggle-music');
+
+  const p = audio.play();
+  if (p !== undefined) p.catch(() => { /* autoodtwarzanie może być zablokowane – OK */ });
+
+  btn.textContent = audio.paused ? '▶ Start' : '⏸ Stop';
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '⏸ Stop';
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      audio.pause();
+      btn.textContent = '▶ Start';
+      btn.setAttribute('aria-pressed', 'false');
+    }
+  });
+});
+
+// ——— Helper do wideo ———
+function openVideo(src) {
+  const popup  = document.getElementById('video-popup');
+  const player = document.getElementById('video-player');
+
+  // wyczyść poprzednie źródło
+  player.removeAttribute('src');
+  while (player.firstChild) player.removeChild(player.firstChild);
+
+  // dodaj nowe źródło
+  const source = document.createElement('source');
+  source.src  = src;     // np. 'partials/video01.mp4'
+  source.type = 'video/mp4';
+  player.appendChild(source);
+
+  popup.style.display = 'flex';
+  player.load();
+  player.play().catch(()=>{});
+}
+</script>
+<!-- <<< SKRYPT MUZYKI + WIDEO – KONIEC <<< -->
+
 </body>
 </html>
