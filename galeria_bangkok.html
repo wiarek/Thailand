@@ -19,8 +19,31 @@
     }
   });
 </script>
-<!-- <<< MUZYKA KONIEC <<< -->
+<!-- <<< PRZYCISK STOP <<< --> 
+<script>
+  const audio = document.getElementById('bg-music');
+  const toggleBtn = document.getElementById('toggle-music');
 
+  window.addEventListener('load', function () {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn("Autoodtwarzanie zablokowane, użytkownik musi włączyć dźwięk ręcznie.");
+      });
+    }
+  });
+
+  toggleBtn.addEventListener('click', function () {
+    if (!audio.paused) {
+      audio.pause();
+      toggleBtn.textContent = '▶ Start';
+    } else {
+      audio.play();
+      toggleBtn.textContent = '⏸ Stop';
+    }
+  });
+</script>      
+<!-- <<< MUZYKA KONIEC <<< -->         
 <style>
     body {
       font-family: sans-serif;
