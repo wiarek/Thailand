@@ -46,6 +46,7 @@
       font-size: 0.9rem;
       color: #666;
       border-radius: 8px;
+      overflow: hidden;
     }
     .gallery img {
       width: 100%;
@@ -126,26 +127,26 @@
 <a class="back-button" href="home.html">← Powrót do strony głównej / กลับไปยังหน้าแรก</a>
 
 <div class="gallery">
-<div><a href="img/galerie/bangkok/01.jpg"><img alt="01.jpg" src="img/galerie/bangkok/01.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/02.jpg"><img alt="02.jpg" src="img/galerie/bangkok/02.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/03.jpg"><img alt="03.jpg" src="img/galerie/bangkok/03.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/04.jpg"><img alt="04.jpg" src="img/galerie/bangkok/04.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/05.jpg"><img alt="05.jpg" src="img/galerie/bangkok/05.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/06.jpg"><img alt="06.jpg" src="img/galerie/bangkok/06.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/07.jpg"><img alt="07.jpg" src="img/galerie/bangkok/07.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/08.jpg"><img alt="08.jpg" src="img/galerie/bangkok/08.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/09.jpg"><img alt="09.jpg" src="img/galerie/bangkok/09.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/10.jpg"><img alt="10.jpg" src="img/galerie/bangkok/10.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/11.jpg"><img alt="11.jpg" src="img/galerie/bangkok/11.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/12.jpg"><img alt="12.jpg" src="img/galerie/bangkok/12.jpg"/></a></div>
-<div><a href="img/galerie/bangkok/13.jpg"><img alt="13.jpg" src="img/galerie/bangkok/13.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/01.jpg"><img alt="01.jpg" src="img/galerie/bangkok/01.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/02.jpg"><img alt="02.jpg" src="img/galerie/bangkok/02.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/03.jpg"><img alt="03.jpg" src="img/galerie/bangkok/03.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/04.jpg"><img alt="04.jpg" src="img/galerie/bangkok/04.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/05.jpg"><img alt="05.jpg" src="img/galerie/bangkok/05.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/06.jpg"><img alt="06.jpg" src="img/galerie/bangkok/06.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/07.jpg"><img alt="07.jpg" src="img/galerie/bangkok/07.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/08.jpg"><img alt="08.jpg" src="img/galerie/bangkok/08.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/09.jpg"><img alt="09.jpg" src="img/galerie/bangkok/09.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/10.jpg"><img alt="10.jpg" src="img/galerie/bangkok/10.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/11.jpg"><img alt="11.jpg" src="img/galerie/bangkok/11.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/12.jpg"><img alt="12.jpg" src="img/galerie/bangkok/12.jpg"/></a></div>
+  <div><a href="img/galerie/bangkok/13.jpg"><img alt="13.jpg" src="img/galerie/bangkok/13.jpg"/></a></div>
 
-<!-- !!! POPRAWKA WIDEO !!! Miniatura w galerii -->
-<div>
-  <a href="#" onclick="document.getElementById('video-popup').style.display='flex'; return false;">
-    <img src="img/miniatura%20video.png" alt="Wideo" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
-  </a>
-</div>
+  <!-- !!! POPRAWKA WIDEO !!! Miniatura w galerii -->
+  <div>
+    <a href="#" onclick="document.getElementById('video-popup').style.display='flex'; return false;">
+      <img src="img/miniatura%20video.png" alt="Wideo" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+    </a>
+  </div>
 </div> <!-- zamknięcie .gallery -->
 
 <!-- !!! POPRAWKA WIDEO !!! Popup z odtwarzaczem -->
@@ -153,7 +154,7 @@
   <div style="position:relative; max-width:960px; width:100%;">
     <button type="button" aria-label="Zamknij wideo"
             style="position:absolute; top:-40px; right:0; background:#ffffffcc; border:0; border-radius:8px; padding:.4rem .6rem; cursor:pointer;">✕</button>
-    <video id="popup-video" src="img/fale.mp4" controls preload="metadata" playsinline
+    <video id="popup-video" src="partials/video01.mp4" controls preload="metadata" playsinline
            poster="img/miniatura%20video.png"
            style="width:100%; height:auto; max-height:80vh; background:#000; border-radius:8px;"></video>
   </div>
@@ -214,7 +215,7 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
     btn.addEventListener('click', () => {
       if (audio.paused) {
         audio.play();
-        btn.textContent = '⏸ Stop';
+      btn.textContent = '⏸ Stop';
         btn.setAttribute('aria-pressed', 'true');
       } else {
         audio.pause();
