@@ -120,7 +120,7 @@
 <!-- >>> MUZYKA + PRZYCISK START >>> -->
 <audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
 <button id="toggle-music" style="position:fixed; top:60px; right:10px; z-index:2000;" aria-pressed="false">⏸ Stop</button>
-<!-- <<< MUZYKA + PRZYCISK KONIEC <<< -->
+<!-- <<< MUZYKA + PRZYCISKU KONIEC <<< -->
 
 <div class="container">
 <a class="back-button" href="home.html">← Powrót do strony głównej / กลับไปยังหน้าแรก</a>
@@ -147,6 +147,17 @@
   </a>
 </div>
 </div> <!-- zamknięcie .gallery -->
+
+<!-- !!! POPRAWKA WIDEO !!! Popup z odtwarzaczem -->
+<div id="video-popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:10000; align-items:center; justify-content:center; padding:16px;">
+  <div style="position:relative; max-width:960px; width:100%;">
+    <button type="button" aria-label="Zamknij wideo"
+            style="position:absolute; top:-40px; right:0; background:#ffffffcc; border:0; border-radius:8px; padding:.4rem .6rem; cursor:pointer;">✕</button>
+    <video id="popup-video" src="img/fale.mp4" controls preload="metadata" playsinline
+           poster="img/miniatura video.png"
+           style="width:100%; height:auto; max-height:80vh; background:#000; border-radius:8px;"></video>
+  </div>
+</div>
 
 <div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
 
