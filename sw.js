@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'thailand-cache-v6';
+const CACHE_NAME = 'thailand-cache-v7';
 const urlsToCache = [
   '/',
   '/Thailand/index.html',
