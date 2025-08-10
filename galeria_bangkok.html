@@ -118,11 +118,8 @@
 <header>Galeria zdjęć / แกลเลอรีภาพถ่าย</header>
 
 <!-- >>> MUZYKA + PRZYCISK START >>> -->
-<!-- >>> MUZYKA + PRZYCISK START >>> -->
 <audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
 <button id="toggle-music" style="position:fixed; top:60px; right:10px; z-index:2000;" aria-pressed="false">⏸ Stop</button>
-<!-- <<< MUZYKA + PRZYCISK KONIEC <<< -->
-
 <!-- <<< MUZYKA + PRZYCISK KONIEC <<< -->
 
 <div class="container">
@@ -143,15 +140,17 @@
 <div><a href="img/galerie/bangkok/12.jpg"><img alt="12.jpg" src="img/galerie/bangkok/12.jpg"/></a></div>
 <div><a href="img/galerie/bangkok/13.jpg"><img alt="13.jpg" src="img/galerie/bangkok/13.jpg"/></a></div>
 
+<!-- !!! POPRAWKA WIDEO !!! Miniatura w galerii -->
 <div>
   <a href="#" onclick="document.getElementById('video-popup').style.display='flex'; return false;">
-    <img src="partials/video01.jpg" alt="Wideo" />
+    <img src="partials/video01.jpg" alt="Wideo">
   </a>
 </div>
 </div>
 
+<!-- !!! POPRAWKA WIDEO !!! Popup z posterem -->
 <div id="video-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:9999; align-items:center; justify-content:center;">
-  <video controls style="max-width:90%; max-height:90%;">
+  <video id="popup-video" controls preload="metadata" poster="partials/video01.jpg" style="max-width:90%; max-height:90%;">
     <source src="partials/video01.mp4" type="video/mp4">
     Twoja przeglądarka nie obsługuje tego wideo.
   </video>
@@ -225,6 +224,28 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
   });
 </script>
 <!-- <<< SKRYPT MUZYKI + PRZYCISKU KONIEC <<< -->
+
+<!-- !!! POPRAWKA WIDEO !!! Skrypt do zamykania i pauzowania -->
+<script>
+  (function () {
+    const popup  = document.getElementById('video-popup');
+    const video  = document.getElementById('popup-video');
+    const closeB = popup.querySelector('button');
+
+    function closeVideo() {
+      popup.style.display = 'none';
+      if (video) {
+        video.pause();
+        try { video.currentTime = 0; } catch(e){}
+      }
+    }
+
+    closeB.addEventListener('click', closeVideo);
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) closeVideo();
+    });
+  })();
+</script>
 
 </body>
 </html>
