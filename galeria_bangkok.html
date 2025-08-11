@@ -258,4 +258,20 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
 </script>
 
 </body>
+<!-- !!! INSTRUKCJA DODANIA NOWEGO WIDEO !!!  
+1. Skopiuj cały blok oznaczony w komentarzu:
+   <!-- ⬇️--KOPIUJ NOWY PLIK VIDEO--------⬇️ ----> ... <!-- ⬆️--KOPIUJ NOWY PLIK VIDEO--------⬆️ ---->
+   i wklej go w sekcji .gallery w miejscu, gdzie chcesz, aby miniatura wideo się pojawiła.
+2. W skopiowanym bloku zmień:
+   - wszystkie numery w identyfikatorach na nowy, np. 'video-popup2' i 'popup-video2'.
+   - plik miniatury na inny, jeśli chcesz (atrybut src w <img>).
+3. Skopiuj cały popup z odtwarzaczem (div id="video-popup1" ...) i wklej pod istniejącym popupem.
+   - Zmień numery identyfikatorów analogicznie jak w punkcie 2.
+   - Wstaw właściwy plik wideo w atrybucie src w <video>.
+4. W sekcji <script> na dole skopiuj i wklej istniejący blok:
+   (function () { const popup = document.getElementById('video-popup1'); ... })();
+   i zamień numery na te z nowego popupu.
+5. Gotowe – nowe wideo będzie działać niezależnie od pozostałych.
+-->
+    
 </html>
