@@ -192,7 +192,13 @@
 <!-- <<< POPUP WIDEO – KONIEC >>> -->
 
 </div>
-<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+<div class="lightbox-overlay">
+  <button class="lightbox-prev">‹</button>
+  <img/>
+  <button class="lightbox-next">›</button>
+  <button class="lightbox-rotate" style="position:absolute;bottom:20px;right:20px;background:#fff;border:0;border-radius:8px;padding:.4rem .8rem;cursor:pointer;z-index:1002;">⟳ Obróć</button>
+</div>
+
 
 <script>
 const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
@@ -227,10 +233,18 @@ document.querySelector(".lightbox-prev").addEventListener("click", function(e) {
 });
 
 document.querySelector(".lightbox-next").addEventListener("click", function(e) {
-  e.stopPropagation();
+  e.stopPropagation();    
   currentIndex = (currentIndex + 1) % images.length;
   showImage(currentIndex);
 });
+// Obracanie zdjęcia
+let rotation = 0;
+document.querySelector(".lightbox-rotate").addEventListener("click", function(e) {
+  e.stopPropagation();
+  rotation = (rotation + 90) % 360;
+  document.querySelector(".lightbox-overlay img").style.transform = `rotate(${rotation}deg)`;
+});
+    
 </script>
 
 <!-- >>> SKRYPT MUZYKI + WIDEO – START >>> -->
