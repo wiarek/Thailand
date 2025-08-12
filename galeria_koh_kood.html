@@ -193,7 +193,7 @@
 
 </div> <!-- .container -->
 
-<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button><button class="lightbox-rotate" style="position:absolute; bottom:20px; right:20px; background:#fff; border:0; border-radius:8px; padding:.4rem .8rem; cursor:pointer; z-index:1002;">⟳ Obróć</button></div>
 
 <script>
 const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
@@ -233,6 +233,20 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
   showImage(currentIndex);
 });
 </script>
+<script>
+let rotation = 0;
+const overlayImg = document.querySelector(".lightbox-overlay img");
+document.querySelector(".lightbox-rotate").addEventListener("click", function(e) {
+  e.stopPropagation();
+  rotation = (rotation + 90) % 360;
+  overlayImg.style.transform = `rotate(${rotation}deg)`;
+});
+document.querySelector(".lightbox-overlay").addEventListener("click", function() {
+  rotation = 0;
+  overlayImg.style.transform = "rotate(0deg)";
+});
+</script>
+
 
 <!-- >>> SKRYPT MUZYKI + WIDEO – START >>> -->
 <script>
