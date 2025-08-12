@@ -81,12 +81,13 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
+      z-index: 20000; /* PODNIESIONE: nad przyciskiem muzyki */
     }
     .lightbox-overlay img {
       max-width: 90%;
       max-height: 90%;
       box-shadow: 0 0 20px #fff;
+      transition: transform .2s ease;
     }
     .lightbox-prev, .lightbox-next {
       position: absolute;
@@ -97,7 +98,7 @@
       font-size: 3rem;
       border: none;
       cursor: pointer;
-      z-index: 1001;
+      z-index: 20001;
     }
     .lightbox-prev { left: 20px; }
     .lightbox-next { right: 20px; }
@@ -120,7 +121,6 @@
 <!-- >>> PRZYCISK MUZYKI (dodane) >>> -->
 <audio id="bg-music" src="audio/background.mp3" autoplay loop></audio>
 <button id="toggle-music" style="position:fixed; top:60px; right:10px; z-index:2000;" aria-pressed="false">⏸ Stop</button>
-
 <!-- <<< PRZYCISK MUZYKI KONIEC <<< -->
 
 <div class="container">
@@ -190,15 +190,16 @@
 </div>
 <!-- <<< POPUP WIDEO KONIEC <<< -->
 
-<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button><button class="lightbox-rotate" style="position:absolute; bottom:20px; right:20px; background:#fff; border:0; border-radius:8px; padding:.4rem .8rem; cursor:pointer; z-index:20001;">⟳ Obróć</button></div>
+
 <script>
 const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
+const overlay = document.querySelector(".lightbox-overlay");
+const overlayImg = overlay.querySelector("img");
 let currentIndex = 0;
 
 function showImage(index) {
-  const overlay = document.querySelector(".lightbox-overlay");
-  const img = overlay.querySelector("img");
-  img.src = images[index].href;
+  overlayImg.src = images[index].href;
   overlay.style.display = "flex";
   currentIndex = index;
 }
@@ -206,27 +207,45 @@ function showImage(index) {
 images.forEach((link, index) => {
   link.addEventListener("click", function(e) {
     e.preventDefault();
+    e.stopPropagation(); // nie puszczaj kliknięcia dalej
     showImage(index);
   });
 });
 
-document.querySelector(".lightbox-overlay").addEventListener("click", function(e) {
-  if (!e.target.classList.contains("lightbox-prev") && !e.target.classList.contains("lightbox-next")) {
-    this.style.display = "none";
-    this.querySelector("img").src = "";
+// zamykaj TYLKO przy kliknięciu w tło
+overlay.addEventListener("click", function(e) {
+  if (e.target === overlay) {
+    overlay.style.display = "none";
+    overlayImg.src = "";
   }
 });
 
 document.querySelector(".lightbox-prev").addEventListener("click", function(e) {
-  e.stopPropagation();
+  e.preventDefault(); e.stopPropagation();
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   showImage(currentIndex);
 });
 
 document.querySelector(".lightbox-next").addEventListener("click", function(e) {
-  e.stopPropagation();
+  e.preventDefault(); e.stopPropagation();
   currentIndex = (currentIndex + 1) % images.length;
   showImage(currentIndex);
+});
+</script>
+
+<script>
+let rotation = 0;
+const overlayImg2 = document.querySelector(".lightbox-overlay img");
+document.querySelector(".lightbox-rotate").addEventListener("click", function(e) {
+  e.stopPropagation();
+  rotation = (rotation + 90) % 360;
+  overlayImg2.style.transform = `rotate(${rotation}deg)`;
+});
+document.querySelector(".lightbox-overlay").addEventListener("click", function(e) {
+  if (e.target === this) { // reset tylko przy zamknięciu kliknięciem w tło
+    rotation = 0;
+    overlayImg2.style.transform = "rotate(0deg)";
+  }
 });
 </script>
 
