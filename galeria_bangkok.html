@@ -170,7 +170,7 @@
 
 </div>
 
-<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button></div>
+<div class="lightbox-overlay"><button class="lightbox-prev">‹</button><img/><button class="lightbox-next">›</button><button class="lightbox-rotate" style="position:absolute;bottom:20px;right:20px;background:#fff;border:0;border-radius:8px;padding:.4rem .8rem;cursor:pointer;z-index:1002;">⟳ Obróć</button></div>
 
 <script>
 const images = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
@@ -208,6 +208,21 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
   e.stopPropagation();
   currentIndex = (currentIndex + 1) % images.length;
   showImage(currentIndex);
+});
+</script>
+<script>
+let rotation = 0;
+const overlayImg = document.querySelector(".lightbox-overlay img");
+
+document.querySelector(".lightbox-rotate").addEventListener("click", function(e) {
+  e.stopPropagation();
+  rotation = (rotation + 90) % 360;
+  overlayImg.style.transform = `rotate(${rotation}deg)`;
+});
+
+document.querySelector(".lightbox-overlay").addEventListener("click", function() {
+  rotation = 0;
+  overlayImg.style.transform = `rotate(0deg)`;
 });
 </script>
 
@@ -256,9 +271,11 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
     });
   })();
 </script>
+
+</body>
 <!-- !!! INSTRUKCJA DODANIA NOWEGO WIDEO !!!  
 1. Skopiuj cały blok oznaczony w komentarzu:
-   ⬇️--KOPIUJ NOWY PLIK VIDEO--------⬇️ ... ⬆️--KOPIUJ NOWY PLIK VIDEO--------⬆️
+   <!-- ⬇️--KOPIUJ NOWY PLIK VIDEO--------⬇️ ----> ... <!-- ⬆️--KOPIUJ NOWY PLIK VIDEO--------⬆️ ---->
    i wklej go w sekcji .gallery w miejscu, gdzie chcesz, aby miniatura wideo się pojawiła.
 2. W skopiowanym bloku zmień:
    - wszystkie numery w identyfikatorach na nowy, np. 'video-popup2' i 'popup-video2'.
@@ -271,5 +288,5 @@ document.querySelector(".lightbox-next").addEventListener("click", function(e) {
    i zamień numery na te z nowego popupu.
 5. Gotowe – nowe wideo będzie działać niezależnie od pozostałych.
 -->
-</body>    
+    
 </html>
