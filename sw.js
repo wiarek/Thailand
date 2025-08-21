@@ -1,8 +1,8 @@
 // === ustawienia ===
 const APP_BASE = '/Thailand/';                   // ważne: subfolder
-const PRECACHE = 'thailand-precache-v4
+const PRECACHE = 'thailand-precache-v5
   ';
-const RUNTIME  = 'thailand-runtime-v4
+const RUNTIME  = 'thailand-runtime-v5
   ';
 
 const PRECACHE_URLS = [
